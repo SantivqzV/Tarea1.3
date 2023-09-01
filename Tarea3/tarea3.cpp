@@ -16,7 +16,7 @@ using namespace std;
 
 int main(){
     ///Definir vectores para guardar los IPs orginiales y los que serán convertidos
-    vector<string> ips = {"0.1.0.1","0.0.0.1","1.0.1.1","0.0.1.0"};
+    vector<string> ips = {"255.1.0.1","0.0.0.1","1.0.1.1","0.0.1.0"};
     vector<double> ipsConvertidos = {};
     
     ///Loop para iterar sobre el vector de la IP original
@@ -61,4 +61,8 @@ int main(){
     for(int i = 0; i < ipsConvertidos.size();i++){
         cout << ipsConvertidos[i] << endl;
     }
+
+    ///Pedir el IP a buscar
+
+    ///Desplegar Fecha, Hora, IP en formato original, INFO
 }
