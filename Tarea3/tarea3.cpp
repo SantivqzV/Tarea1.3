@@ -16,7 +16,7 @@ using namespace std;
 
 int main(){
     ///Definir vectores para guardar los IPs orginiales y los que serán convertidos
-    vector<string> ips = {"0.0.0.1","0.1.0.1","1.1.1.1"};
+    vector<string> ips = {"0.1.0.1","0.0.0.1","1.0.1.1","0.0.1.0"};
     vector<double> ipsConvertidos = {};
     
     ///Loop para iterar sobre el vector de la IP original
@@ -50,6 +50,13 @@ int main(){
         operacionConvertir(ipsConvertidos,temp);
     }
 
+    ///Variables para método de ordenamiento
+    int start = 0;
+    int end = ipsConvertidos.size() - 1;
+
+    ///Llamar a ordenaMerge
+    ordenaMerge(ipsConvertidos, start, end, ipsConvertidos.size());
+    
     ///Imprimir los IPs en base 10
     for(int i = 0; i < ipsConvertidos.size();i++){
         cout << ipsConvertidos[i] << endl;
