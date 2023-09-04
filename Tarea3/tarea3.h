@@ -13,6 +13,53 @@
 #include <math.h>
 using namespace std;
 
+class Linea {
+    private:
+        string fecha;
+        string time;
+        string ip;
+        string info;
+        double key;
+    public:
+        ///Constructor default
+        Linea();
+        Linea(string, string, string, string, double);
+
+        ///Imprimir
+        void print();
+
+        ///getter
+        double getKey(){
+            return key;
+        }
+
+        ///Sorting
+        void ordenaMerge(vector<Linea>, int, int, int);
+        void ordenaMergeUne(vector<Linea>, int, int, int, int);
+};
+
+Linea::Linea(){
+    fecha = "";
+    time = "";
+    ip = "";
+    info = "";
+    key = 0;
+}
+
+Linea::Linea(string _fecha, string _time, string _ip, string _info, double _key ){
+    fecha = _fecha;
+    time = _time;
+    ip = _ip;
+    info = _info;
+    key = _key;
+}
+
+
+void Linea::print(){
+    cout << "Fecha: " << fecha << " Tiempo: " << time;
+    cout << "IP: " << ip << " Info: " << info << " Llave: " << key << endl;
+}
+
 /**
  * Convertir un IP a un valor en base 10
  * 
@@ -30,13 +77,44 @@ using namespace std;
  * @note complejidad de tiempo: O(n)
  * @note complejidad de espacio: O(1)
 */
-void operacionConvertir(vector<double> &ipsNuevo, vector<double> &temp){
-    double total;
+void operacionConvertir(vector<double> &temp, double &total){
     for(int i = 0; i <= 3; i++){
         total += temp[3-i] * (pow(256, i));
     }
-    ipsNuevo.push_back(total);
 }
+
+double operacionConvertirKey(string ip){
+ ///Definir variables para las iteraciones
+        string target = ip;
+        string octet = "";
+        double total;
+        ///Definir vector de octetos y el vector temporal
+        vector<string> octets;
+        vector<double> temp;
+
+        ///Loop para parsear el string de la IP y quedar con 4 octetos
+        for(int j = 0; j < target.size();j++){
+            if(target[j] == '.'){
+                octets.push_back(octet);
+                octet = "";
+            }
+            else{
+                octet += target[j];
+            }
+        }
+        octets.push_back(octet);
+
+        ///Cambiar los octetos a double y pasarlos al vector temporal
+        for(int j = 0; j < octets.size(); j++){
+            temp.push_back(stod(octets[j]));
+        }
+
+        ///Llamar la operacionConvertir para hacer la conversión de los octetos a un número de base 10
+        operacionConvertir(temp, total);
+        return total;
+        
+}
+
 
 /**
  * Función complemento de método de ordenamiento Merge
@@ -56,15 +134,15 @@ void operacionConvertir(vector<double> &ipsNuevo, vector<double> &temp){
  * Complejidad de Espacio: O(n)
 */
 
-void ordenaMergeUne(vector<double> &arr, int start, int end, int mid, int size){
+void ordenaMergeUne(vector<Linea> &arr, int start, int end, int mid, int size){
     int i = start;
     int j = mid + 1;
     int k = start;
 
-    vector<double> temp(size);
+    vector<Linea> temp(size);
 
     while(i <= mid && j <= end){
-        if(arr[i] < arr[j]){
+        if(arr[i].getKey() < arr[j].getKey()){
             temp[k] = arr[i];
             i++;
         }
@@ -111,7 +189,7 @@ void ordenaMergeUne(vector<double> &arr, int start, int end, int mid, int size){
  * Complejidad de tiempo: O(nlog(n))
  * Complejidad de espacio: O(n)
 */
-void ordenaMerge(vector<double> &arr, int start, int end, int size){
+void ordenaMerge(vector<Linea> &arr, int start, int end, int size){
     if(start < end){
         int mid = (start + end)/2;
 
