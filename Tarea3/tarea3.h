@@ -57,7 +57,7 @@ Linea::Linea(string _fecha, string _time, string _ip, string _info, double _key 
 
 void Linea::print(){
     cout << "Fecha: " << fecha << " Tiempo: " << time;
-    cout << "IP: " << ip << " Info: " << info << " Llave: " << key << endl;
+    cout << " IP: " << ip << " Info: " << info << " Llave: " << key << endl;
 }
 
 /**
