@@ -81,20 +81,25 @@ int main(){
     cin >> a;
     cin >> b;
     
+    ///Convertir los ips a su número equivalente en base 10
     double uno = operacionConvertirKey(a);
     double dos = operacionConvertirKey(b);
 
-    cout << uno << endl;
-    cout << dos << endl;
-
+    ///Definir variables para la Ip grande y la chica
     int mayor;
     int menor;
 
+    ///Si uno es menor a dos, se asigna uno como menor y dos como mayor
     if(uno <= dos){
         mayor = busquedaBinariaGreaterOrEqual(elementos, dos, 0, elementos.size() - 1);
         menor = busquedaBinariaLessOrEqual(elementos, uno, 0, elementos.size() - 1);
     }
+    else{
+        mayor = busquedaBinariaGreaterOrEqual(elementos, uno, 0, elementos.size() - 1);
+        menor = busquedaBinariaLessOrEqual(elementos, dos, 0, elementos.size() - 1);
+    }
 
+    ///Imprimir el resultado de la busqueda del rango. 
     for(menor; menor <= mayor; menor++){
         elementos[menor].print();
     }
