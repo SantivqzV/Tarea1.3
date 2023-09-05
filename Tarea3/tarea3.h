@@ -28,6 +28,9 @@ class Linea {
         ///Imprimir
         void print();
 
+        ///Escribir en documento
+        string escribir();
+
         ///getter
         double getKey(){
             return key;
@@ -56,8 +59,15 @@ Linea::Linea(string _fecha, string _time, string _ip, string _info, double _key 
 
 
 void Linea::print(){
-    cout << "Fecha: " << fecha << " Tiempo: " << time;
-    cout << " IP: " << ip << " Info: " << info << " Llave: " << key << endl;
+    cout << "Fecha: " << fecha << " Hora: " << time;
+    cout << " IP: " << ip << " Info: " << info << endl;
+}
+
+string Linea::escribir(){
+    stringstream ss;
+    ss << "Fecha: " << fecha << " Hora: " << time;
+    ss << " IP: " << ip << " Info: " << info << endl;
+    return ss.str();
 }
 
 /**
