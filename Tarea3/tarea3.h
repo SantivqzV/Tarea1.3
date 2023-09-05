@@ -59,14 +59,12 @@ Linea::Linea(string _fecha, string _time, string _ip, string _info, double _key 
 
 
 void Linea::print(){
-    cout << "Fecha: " << fecha << " Hora: " << time;
-    cout << " IP: " << ip << " Info: " << info << endl;
+    cout <<  fecha << " " << time << " | IP: " << ip << " | INFO: " << info << endl;
 }
 
 string Linea::escribir(){
     stringstream ss;
-    ss << "Fecha: " << fecha << " Hora: " << time;
-    ss << " IP: " << ip << " Info: " << info << endl;
+    ss <<  fecha << " " << time << " | IP: " << ip << " | INFO: " << info << endl;
     return ss.str();
 }
 

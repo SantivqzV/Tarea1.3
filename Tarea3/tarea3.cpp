@@ -69,9 +69,9 @@ int main(){
     ordenaMerge(elementos, 0, end,elementos.size());
 
     ///Desplegar Fecha, Hora, IP en formato original, INFO
-    for (int i = 0; i < elementos.size(); i++) {
-        elementos[i].print();
-    }
+    // for (int i = 0; i < elementos.size(); i++) {
+    //     elementos[i].print();
+    // }
 
     ofstream Myfile("libreriaOrdenada.txt");
     for (int i = 0; i < elementos.size(); i++) {
