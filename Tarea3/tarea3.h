@@ -235,7 +235,7 @@ double busquedaBinariaGreaterOrEqual(vector<double>& arr, double target, int lef
     
     while (left <= right) {
         int mid = (left + right)/2;
-        if(arr[mid] > target){
+        if(arr[mid] >= target){
             result = mid;
             right = mid - 1;
         }

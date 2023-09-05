@@ -72,20 +72,21 @@ int main(){
     ordenaMerge(elementos, 0, end,elementos.size());
 
 
-    ///Busqueda de rango de IPs
+    // ///Busqueda de rango de IPs
 
-    ///Pedir al usuario que ingrese 2 IPs para establecer el rango de busqueda
-    string a;
-    string b;
-    cout << "Ingresa el rango de IPs que desea buscar" << endl;
-    cin >> a;
-    cin >> b;
-    
+    // ///Pedir al usuario que ingrese 2 IPs para establecer el rango de busqueda
+    // string a;
+    // string b;
+    // cout << "Ingresa el rango de IPs que desea buscar" << endl;
+    // cin >> a;
+    // cin >> b;
     
     vector<double> hola = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4};
-    int mayor = busquedaBinariaGreaterOrEqual(hola, 3.1, 0, hola.size() - 1);
-    int menor = busquedaBinariaLessOrEqual(hola, 3.1, 0, hola.size() - 1);
+    int mayor = busquedaBinariaGreaterOrEqual(hola, 3, 0, hola.size() - 1);
+    int menor = busquedaBinariaLessOrEqual(hola, 3, 0, hola.size() - 1);
 
+    cout << mayor << endl;
+    cout << menor << endl;
     for(menor; menor <= mayor; menor++){
         cout << hola[menor];
     }
