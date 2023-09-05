@@ -24,8 +24,11 @@ int main(){
     vector<string> horas;
     vector<string> ips;
     vector<string> info;
+
+    ///Definir el vector donde serán guardado los objetos que corresponden a cada linea de código
     vector<Linea> elementos;
 
+    ///Leer el archivo
     ifstream archivo("bitacoraelb.txt");
     if (!archivo) {
         cout << "No se pudo abrir el archivo." << endl;
@@ -68,11 +71,27 @@ int main(){
     ///Ordenar la información en base a la IP
     ordenaMerge(elementos, 0, end,elementos.size());
 
-    ///Desplegar Fecha, Hora, IP en formato original, INFO
-    // for (int i = 0; i < elementos.size(); i++) {
-    //     elementos[i].print();
-    // }
 
+    ///Busqueda de rango de IPs
+
+    ///Pedir al usuario que ingrese 2 IPs para establecer el rango de busqueda
+    string a;
+    string b;
+    cout << "Ingresa el rango de IPs que desea buscar" << endl;
+    cin >> a;
+    cin >> b;
+    
+    
+    vector<double> hola = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4};
+    int mayor = busquedaBinariaGreaterOrEqual(hola, 3.1, 0, hola.size() - 1);
+    int menor = busquedaBinariaLessOrEqual(hola, 3.1, 0, hola.size() - 1);
+
+    for(menor; menor <= mayor; menor++){
+        cout << hola[menor];
+    }
+    
+
+    ///Crear un archivo de tipo texto y escribirle toda la información ordenada de forma ascendente en función de la IP
     ofstream Myfile("libreriaOrdenada.txt");
     for (int i = 0; i < elementos.size(); i++) {
         Myfile << elementos[i].escribir();

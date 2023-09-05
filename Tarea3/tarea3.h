@@ -209,3 +209,43 @@ void ordenaMerge(vector<Linea> &arr, int start, int end, int size){
         ordenaMergeUne(arr, start, end, mid, size);
     }
 }
+
+double busquedaBinariaLessOrEqual(vector<double>& arr, double target, int left, int right){
+    double result = -1;  // Initialize the result to -1 (not found).
+    
+    while (left <= right) {
+        int mid = (left + right)/2;
+        if(arr[mid] <= target){
+            result = mid;
+            left = mid + 1;
+        }
+        else{
+            right = mid - 1;
+        }
+    }
+    while(arr[result] == arr[result - 1]){
+        result--;
+    }
+
+    return result;
+}
+
+double busquedaBinariaGreaterOrEqual(vector<double>& arr, double target, int left, int right){
+    double result = -1;  // Initialize the result to -1 (not found).
+    
+    while (left <= right) {
+        int mid = (left + right)/2;
+        if(arr[mid] > target){
+            result = mid;
+            right = mid - 1;
+        }
+        else{
+            left = mid + 1;
+        }
+    }
+    while(arr[result] == arr[result + 1]){
+        result++;
+    }
+
+    return result;
+}
