@@ -39,6 +39,10 @@ class Linea {
         ///Sorting
         void ordenaMerge(vector<Linea>, int, int, int);
         void ordenaMergeUne(vector<Linea>, int, int, int, int);
+
+        ///Busqueda
+        double busquedaBinariaLessOrEqual(vector<Linea>, double, int, int);
+        double busquedaBinariaGreaterOrEqual(vector<Linea>, double, int, int);
 };
 
 Linea::Linea(){
@@ -119,8 +123,7 @@ double operacionConvertirKey(string ip){
 
         ///Llamar la operacionConvertir para hacer la conversión de los octetos a un número de base 10
         operacionConvertir(temp, total);
-        return total;
-        
+        return total; 
 }
 
 
@@ -210,12 +213,12 @@ void ordenaMerge(vector<Linea> &arr, int start, int end, int size){
     }
 }
 
-double busquedaBinariaLessOrEqual(vector<double>& arr, double target, int left, int right){
+double busquedaBinariaLessOrEqual(vector<Linea>& arr, double target, int left, int right){
     double result = -1;  // Initialize the result to -1 (not found).
     
     while (left <= right) {
         int mid = (left + right)/2;
-        if(arr[mid] <= target){
+        if(arr[mid].getKey() <= target){
             result = mid;
             left = mid + 1;
         }
@@ -223,19 +226,19 @@ double busquedaBinariaLessOrEqual(vector<double>& arr, double target, int left, 
             right = mid - 1;
         }
     }
-    while(arr[result] == arr[result - 1]){
+    while(arr[result].getKey() == arr[result - 1].getKey()){
         result--;
     }
 
     return result;
 }
 
-double busquedaBinariaGreaterOrEqual(vector<double>& arr, double target, int left, int right){
+double busquedaBinariaGreaterOrEqual(vector<Linea>& arr, double target, int left, int right){
     double result = -1;  // Initialize the result to -1 (not found).
     
     while (left <= right) {
         int mid = (left + right)/2;
-        if(arr[mid] >= target){
+        if(arr[mid].getKey() >= target){
             result = mid;
             right = mid - 1;
         }
@@ -243,7 +246,7 @@ double busquedaBinariaGreaterOrEqual(vector<double>& arr, double target, int lef
             left = mid + 1;
         }
     }
-    while(arr[result] == arr[result + 1]){
+    while(arr[result].getKey() == arr[result + 1].getKey()){
         result++;
     }
 
