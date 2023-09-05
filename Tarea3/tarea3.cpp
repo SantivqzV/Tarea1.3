@@ -72,4 +72,9 @@ int main(){
     for (int i = 0; i < elementos.size(); i++) {
         elementos[i].print();
     }
+
+    ofstream Myfile("libreriaOrdenada.txt");
+    for (int i = 0; i < elementos.size(); i++) {
+        Myfile << elementos[i].escribir();
+    }
 }
