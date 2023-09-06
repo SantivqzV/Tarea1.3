@@ -45,7 +45,7 @@ class Linea {
         ///Escribir en documento
         string escribir();
 
-        ///getter
+        ///Getter para clave
         double getKey(){
             return key;
         }
