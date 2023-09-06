@@ -200,13 +200,13 @@ void ordenaMergeUne(vector<Linea> &arr, int start, int end, int mid, int size){
  * Complejidad de tiempo: O(nlog(n))
  * Complejidad de espacio: O(n)
 */
-void ordenaMerge(vector<Linea> &arr, int start, int end, int size){
+void ordenaPorMerge(vector<Linea> &arr, int start, int end, int size){
     if(start < end){
         int mid = (start + end)/2;
 
         ///Llama recursivamente a la misma función para dividir en mitades
-        ordenaMerge(arr, start, mid, size);
-        ordenaMerge(arr, mid + 1, end, size);
+        ordenaPorMerge(arr, start, mid, size);
+        ordenaPorMerge(arr, mid + 1, end, size);
 
         ///llama a la función para unir las mitades ordenadas
         ordenaMergeUne(arr, start, end, mid, size);
@@ -214,7 +214,7 @@ void ordenaMerge(vector<Linea> &arr, int start, int end, int size){
 }
 
 double busquedaBinariaLessOrEqual(vector<Linea>& arr, double target, int left, int right){
-    double result = -1;  // Initialize the result to -1 (not found).
+    double result = -1;  
     
     while (left <= right) {
         int mid = (left + right)/2;
@@ -226,6 +226,7 @@ double busquedaBinariaLessOrEqual(vector<Linea>& arr, double target, int left, i
             right = mid - 1;
         }
     }
+    
     while(arr[result].getKey() == arr[result - 1].getKey()){
         result--;
     }
@@ -234,7 +235,7 @@ double busquedaBinariaLessOrEqual(vector<Linea>& arr, double target, int left, i
 }
 
 double busquedaBinariaGreaterOrEqual(vector<Linea>& arr, double target, int left, int right){
-    double result = -1;  // Initialize the result to -1 (not found).
+    double result = -1;  
     
     while (left <= right) {
         int mid = (left + right)/2;

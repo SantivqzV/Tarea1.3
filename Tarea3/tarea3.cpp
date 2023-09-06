@@ -69,7 +69,7 @@ int main(){
     int end = elementos.size() - 1;
 
     ///Ordenar la información en base a la IP
-    ordenaMerge(elementos, 0, end,elementos.size());
+    ordenaPorMerge(elementos, 0, end,elementos.size());
 
 
     ///Busqueda de rango de IPs
@@ -99,7 +99,8 @@ int main(){
         menor = busquedaBinariaLessOrEqual(elementos, dos, 0, elementos.size() - 1);
     }
 
-    ///Imprimir el resultado de la busqueda del rango. 
+    ///Imprimir el resultado de la busqueda del rango.
+    cout << endl << "Resultado de Busqueda: " << endl; 
     for(menor; menor <= mayor; menor++){
         elementos[menor].print();
     }
